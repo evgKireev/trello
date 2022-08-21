@@ -44,7 +44,18 @@
                   <p class="board__info-data">12:50</p>
                 </div>
               </div>
-              <button class="board__btn">Add Todo</button>
+              <button type="submit" class="board__btn">Add Todo</button>
+            </div>
+            <div class="modal">
+              <form class="form__modal">
+                <input class="form__modal-text" type="text" placeholder="title">
+                <textarea  class="form__modal-desc" placeholder="descriptions"></textarea>
+                <div class="form__modal-actions">
+                  <button class="modal__user">Select user</button>
+                  <button class="modal__cancel">Cancel</button>
+                  <button class="modal__confirm">Confirm</button>
+                </div>
+              </form>
             </div>
             <div class="board">
               <div class="board__header board__header-color_progress">
