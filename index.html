@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="root">
+      <div class="container">
+        <header class="header">
+          <h1 class="header__titile">Trello</h1>
+          <div class="header__time"><span>12:50</span></div>
+        </header>
+        <main class="trello">
+          <div class="trello__inner">
+            <div class="board">
+              <div class="board__header">
+                <h3 class="board__title">TODO</h3>
+                <span class="board__status-task">2</span>
+              </div>
+              <div class="board__card">
+                <div class="board__card-title">
+                  <p class="board__card-text">Какая-то задача</p>
+                  <div class="board__card-actions">
+                    <button class="board__card-edit">Edit</button>
+                    <button class="board__card-delete">Delete</button>
+                  </div>
+                </div>
+                <div class="board__descriptions">
+                  <p class="board__descriptions-title">Описание</p>
+                  <button class="board__descriptions-move">></button>
+                </div>
+                <div class="board__info">
+                  <p class="board__info-user">Petrov V.S</p>
+                  <p class="board__info-data">12:50</p>
+                </div>
+              </div>
+              <button class="board__btn">Add Todo</button>
+            </div>
+            <div class="board">
+              <div class="board__header board__header-color_progress">
+                <h3 class="board__title">IN PROGRESS</h3>
+                <span class="board__status-task">2</span>
+              </div>
+              <div class="board__card board__card--color_progress">
+                <div class="board__card-title">
+                  <p class="board__card-text">Какая-то задача</p>
+                  <div class="board__card-actions">
+                    <button
+                      class="board__card-edit board__card-edit-color_progress"
+                    >
+                      Back
+                    </button>
+                    <button
+                      class="board__card-delete board__card-delete-color_delete"
+                    >
+                      Complete
+                    </button>
+                  </div>
+                </div>
+                <div class="board__descriptions">
+                  <p class="board__descriptions-title">Описание</p>
+                  <button
+                    class="board__descriptions-move board__descriptions-move-color_move"
+                  >
+                    >
+                  </button>
+                </div>
+                <div class="board__info">
+                  <p class="board__info-user">Petrov V.S</p>
+                  <p class="board__info-data">12:50</p>
+                </div>
+              </div>
+            </div>
+            <div class="board">
+              <div class="board__header board__header-color_done">
+                <h3 class="board__title">DONE</h3>
+                <span class="board__status-task">2</span>
+              </div>
+              <div class="board__card board__card-color_move">
+                <div class="board__card-title">
+                  <p class="board__card-text">Какая-то задача</p>
+                  <div class="board__card-actions">
+                    <button
+                      class="board__card-delete board__card-delete-color_done"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <div class="board__descriptions">
+                  <p class="board__descriptions-title">Описание</p>
+                  <button
+                    class="board__descriptions-move board__descriptions-move-color_move"
+                  >
+                    >
+                  </button>
+                </div>
+                <div class="board__info">
+                  <p class="board__info-user">Petrov V.S</p>
+                  <p class="board__info-data">12:50</p>
+                </div>
+              </div>
+              <button class="board__btn board__btn-color_move">
+                Delete All
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

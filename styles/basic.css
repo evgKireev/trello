@@ -1,0 +1,48 @@
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  background-image: url(/images/bg.jpg);
+  color: #000;
+  font-family: 'montserrat', sans-serif;
+  background-position: center center;
+  background-repeat: repeat;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px 0;
+}
+
+.header {
+  background-color: #e1d5e7;
+  border-radius: 10px;
+  border: 1px solid #a184af;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header__time span{
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #a184af;
+  border-radius: 10px;
+
+}
+
+.trello__inner{
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.board{
+  width: 370px;
+  background-color: #fff;
+  border-radius: 10px;
+   
+}
