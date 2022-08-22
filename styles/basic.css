@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   scroll-behavior: smooth;
-  background-image: url(/images/bg.jpg);
+  background-image: url(..//images/bg.jpg);
   color: #000;
   font-family: 'montserrat', sans-serif;
   background-position: center center;
@@ -45,5 +45,9 @@ body {
   width: 370px;
   background-color: #fff;
   border-radius: 10px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
    
 }

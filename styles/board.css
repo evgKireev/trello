@@ -54,10 +54,10 @@
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #96c081;
- 
   width: 100%;
   font-size: 16px;
   cursor: pointer;
+ 
 }
 
 .board__info-user,

@@ -55,9 +55,7 @@ function render() {
   });
 
   function DisplayTodos() {
-    console.log(trelloTodo);
     trelloTodo.forEach((todo) => {
-      console.log(trelloTodo);
       boardCardText.textContent = todo.title;
       boardDesc.textContent = todo.descriptions;
       boardData.textContent = todo.time;
