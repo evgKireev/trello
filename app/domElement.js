@@ -1,3 +1,4 @@
+const time = document.querySelector('.time')
 const boardBtn = document.querySelector('.board__btn');
 const modal = document.querySelector('.modal');
 const formModal = document.querySelector('.form__modal');
@@ -10,9 +11,9 @@ const board = document.querySelector('.board');
 const boardCardText = document.querySelector('.board__card-text');
 const boardDesc = document.querySelector('.board__descriptions-title');
 const boardData = document.querySelector('.board__info-data');
+const boardStatusTodo = document.querySelector('.board__status-todo');
 
-
-export {
+export {time,
   boardBtn,
   modal,
   formModal,
@@ -25,5 +26,5 @@ export {
   boardDesc,
   boardData,
   board,
- 
+  boardStatusTodo,
 };

@@ -9,19 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body id="body">
     <div class="root">
       <div class="container">
         <header class="header">
           <h1 class="header__titile">Trello</h1>
-          <div class="header__time"><span>12:50</span></div>
+          <div class="header__time"><span class="time">12:50</span></div>
         </header>
         <main class="trello">
           <div class="trello__inner">
             <div class="boards">
               <div class="board__header">
                 <h3 class="board__title">TODO</h3>
-                <span class="board__status-task">2</span>
+                <span class="board__status-todo">2</span>
               </div>
               <div class="board">
                 <div class="board__card">
@@ -29,7 +29,7 @@
                     <p class="board__card-text">Какая-то задача</p>
                     <div class="board__card-actions">
                       <button class="board__card-edit">Edit</button>
-                      <button class="board__card-delete">Delete</button>
+                      <button type="submit" class="board__card-delete">Delete</button>
                     </div>
                   </div>
                   <div class="board__descriptions">
@@ -50,11 +50,11 @@
                 <input
                   class="form__modal-text"
                   type="text"
-                  placeholder="title"
+                  placeholder="Title"
                 />
                 <textarea
                   class="form__modal-desc"
-                  placeholder="descriptions"
+                  placeholder="Descriptions"
                 ></textarea>
                 <div class="form__modal-actions">
                   <button class="modal__user">Select user</button>

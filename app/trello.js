@@ -1,6 +1,7 @@
-import { newTime } from './trelloFanction.js';
+import { newTime, getStatusTodo } from './trelloFanction.js';
 import { setLocalStorage, getLocalStorage } from './localStorage.js';
 import {
+  time,
   boardBtn,
   modal,
   formModal,
@@ -13,17 +14,25 @@ import {
   boardDesc,
   boardData,
   board,
+  boardStatusTodo,
 } from './domElement.js';
 
 const KEY_TRELLO_TODO = 'trelloTodo';
 const KEY_TRELLO = 'trello';
 
 function render() {
+  function clock() {
+    time.textContent = newTime(new Date());
+  }
+  setInterval(clock, 1000);
+  clock();
+
   const trello = [];
   let trelloTodo = getLocalStorage(KEY_TRELLO_TODO) || [];
   boardBtn.addEventListener('click', () => {
     modal.classList.add('show-modal');
   });
+
   formModal.addEventListener('submit', (e) => {
     e.preventDefault();
   });
@@ -33,6 +42,7 @@ function render() {
     addTodo.value = '';
     addDesc.value = '';
   });
+
   modalConfirm.addEventListener('click', () => {
     if (addTodo.value === '' || addDesc.value === '') {
       alert('Please Enter todo');
@@ -55,12 +65,13 @@ function render() {
   });
 
   function DisplayTodos() {
+    boardStatusTodo.textContent = getStatusTodo(trelloTodo);
     trelloTodo.forEach((todo) => {
       boardCardText.textContent = todo.title;
       boardDesc.textContent = todo.descriptions;
       boardData.textContent = todo.time;
-      let newBoardCard = boardCard.cloneNode(true);
-      newBoardCard.classList.add('board__card-display');
+      const newBoardCard = boardCard.cloneNode(true);
+      newBoardCard.style.display = 'block';
       board.append(newBoardCard);
     });
   }

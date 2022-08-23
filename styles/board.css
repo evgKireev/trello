@@ -11,17 +11,18 @@
 
 .board__card {
   display: none;
-  
-}
-
-.board__card-display{
-  display: block;
   border-radius: 10px;
   border: 1px solid #96c081;
   background-color: #d5e8d4;
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 15px;
+}
+
+.board__card-display{
+  display: block;
+  
+  
 }
 
 .board__card-title,
