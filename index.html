@@ -23,29 +23,97 @@
                 <h3 class="board__title">TODO</h3>
                 <span class="board__status-todo">2</span>
               </div>
-              <div class="board">
-                <div class="board__card">
-                  <div class="board__card-title">
-                    <p class="board__card-text">Какая-то задача</p>
-                    <div class="board__card-actions">
-                      <button class="board__card-edit">Edit</button>
-                      <button type="submit" class="board__card-delete">Delete</button>
-                    </div>
-                  </div>
-                  <div class="board__descriptions">
-                    <p class="board__descriptions-title">Описание</p>
-                    <button class="board__descriptions-move">></button>
-                  </div>
-                  <div class="board__info">
-                    <p class="board__info-user">Petrov V.S</p>
-                    <p class="board__info-data">12:50</p>
-                  </div>
-                </div>
-              </div>
+              <div class="board"></div>
               <button type="submit" class="board__btn">Add Todo</button>
             </div>
 
-            <div class="modal">
+            <div class="boards">
+              <div class="board__header board__header-color_progress">
+                <h3 class="board__title">IN PROGRESS</h3>
+                <span class="board__status-task">2</span>
+              </div>
+              <div class="board-progress"></div>
+            </div>
+
+            <div class="boards">
+              <div class="board__header board__header-color_done">
+                <h3 class="board__title">DONE</h3>
+                <span class="board__status-task">2</span>
+              </div>
+              <div class="board-done"></div>
+              <button class="board__btn board__btn-color_move">
+                Delete All
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <template id="board-todo">
+      <div class="board__card">
+        <div class="board__card-title">
+          <p class="board__card-text">Какая-то задача</p>
+          <div class="board__card-actions">
+            <button class="board__card-edit">Edit</button>
+            <button class="board__card-delete">Delete</button>
+          </div>
+        </div>
+        <div class="board__descriptions">
+          <p class="board__descriptions-title">Описание</p>
+          <button class="board__descriptions-move">></button>
+        </div>
+        <div class="board__info">
+          <p class="board__info-user">Petrov V.S</p>
+          <p class="board__info-data">12:50</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="board-progress">
+      <div class="board__card board__card-progress">
+        <div class="board__card-title">
+          <p class="board__card-text">Какая-то задача</p>
+          <div class="board__card-actions">
+            <button class="board__card-edit">Back</button>
+            <button type="submit" class="board__card-delete">Complete</button>
+          </div>
+        </div>
+        <div class="board__descriptions">
+          <p class="board__descriptions-title">Описание</p>
+          <button class="board__descriptions-move">></button>
+        </div>
+        <div class="board__info">
+          <p class="board__info-user">Petrov V.S</p>
+          <p class="board__info-data">12:50</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="board-done">
+      <div class="board__card board__card-done">
+        <div class="board__card-title">
+          <p class="board__card-text">Какая-то задача</p>
+          <div class="board__card-actions">
+            <button type="submit" class="board__card-delete">Delete</button>
+          </div>
+        </div>
+        <div class="board__descriptions">
+          <p class="board__descriptions-title">Описание</p>
+          <button class="board__descriptions-move">></button>
+        </div>
+        <div class="board__info">
+          <p class="board__info-user">Petrov V.S</p>
+          <p class="board__info-data">12:50</p>
+        </div>
+      </div>
+    </template>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
+
+<!-- <div class="modal">
               <form class="form__modal">
                 <input
                   class="form__modal-text"
@@ -62,30 +130,4 @@
                   <button class="modal__confirm">Confirm</button>
                 </div>
               </form>
-            </div>
-
-            <div class="boards">
-              <div class="board__header board__header-color_progress">
-                <h3 class="board__title">IN PROGRESS</h3>
-                <span class="board__status-task">2</span>
-              </div>
-              <div class="board"></div>
-            </div>
-
-            <div class="boards">
-              <div class="board__header board__header-color_done">
-                <h3 class="board__title">DONE</h3>
-                <span class="board__status-task">2</span>
-              </div>
-              <div class="board"></div>
-              <button class="board__btn board__btn-color_move">
-                Delete All
-              </button>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
-    <script src="main.js" type="module"></script>
-  </body>
-</html>
+            </div> -->

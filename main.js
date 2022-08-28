@@ -1,2 +1,6 @@
-import {render} from './app/trello.js'
-render()
+import { render } from './app/trello.js';
+
+
+
+
+render();

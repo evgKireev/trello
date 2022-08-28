@@ -1,3 +1,8 @@
+.boards {
+  width: 370px;
+  background-color: #fff;
+  border-radius: 10px;
+}
 
 .board__header {
   background-color: #d5e8d4;
@@ -7,22 +12,30 @@
   border-radius: 10px;
   border: 1px solid #96c081;
   margin-bottom: 15px;
+  font-style: italic;
 }
 
-.board__card {
-  display: none;
-  border-radius: 10px;
-  border: 1px solid #96c081;
-  background-color: #d5e8d4;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 15px;
+.board,
+.board-progress,
+.board-done {
+  overflow-y: auto;
+  height: 500px;
+  padding: 1em 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
-.board__card-display{
-  display: block;
-  
-  
+.board__header-color_progress,
+.board__card--color_progress {
+  background-color: #f8cecc;
+  border: 1px solid #ddaeac;
+}
+
+.board__header-color_done,
+.board__card-color_move {
+  background-color: #dae8fc;
+  border: 1px solid #88a5cf;
 }
 
 .board__card-title,
@@ -34,19 +47,48 @@
   align-items: center;
 }
 
+.board__card-title {
+  font-weight: 700;
+}
+
 .board__card-text,
 .board__descriptions-title {
   width: 150px;
   font-size: 14px;
 }
 
+.board__info-user,
+.board__info-data {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.board__card {
+  border-radius: 10px;
+  border: 1px solid #96c081;
+  background-color: #d5e8d4;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.board__card-progress {
+  background-color: #f8cecc;
+  border: 1px solid #ddaeac;
+}
+
+.board__card-done {
+  background-color: #dae8fc;
+  border: 1px solid #88a5cf;
+}
+
 .board__card-edit,
 .board__card-delete,
 .board__descriptions-move {
   background-color: #fff;
-  padding: 5px;
-  border: 1px solid #96c081;
-  border-radius: 10px;
+  padding: 5px 15px;
+  border: 1px solid #fff;
+  border-radius: 5px;
   font-size: 10px;
   cursor: pointer;
 }
@@ -58,35 +100,14 @@
   width: 100%;
   font-size: 16px;
   cursor: pointer;
- 
 }
 
-.board__info-user,
-.board__info-data {
-  font-size: 12px;
-}
-
-.board__header-color_progress,
-.board__card--color_progress {
-  background-color: #f5f5f5;
-  border: 1px solid #898989;
-}
-
-.board__card-edit-color_progress,
-.board__card-delete-color_delete,
-.board__descriptions-move-color_move {
-  border: 1px solid #000;
-}
-
-.board__header-color_done,
-.board__btn-color_move,
-.board__card-color_move{
+.board__btn-color_move {
   background-color: #dae8fc;
   border: 1px solid #88a5cf;
 }
 
-.board__card-delete-color_done,
-.board__descriptions-move-color_move
- {
-    border: 1px solid #88a5cf;
+
+.todo--remove{
+  display: none;
 }

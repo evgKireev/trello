@@ -1,24 +1,23 @@
+const KEY_API = 'https://6307cc363a2114bac76bdf07.mockapi.io/users/';
+import { getUser } from './API.js';
 import { newTime, getStatusTodo } from './trelloFanction.js';
-import { setLocalStorage, getLocalStorage } from './localStorage.js';
 import {
   time,
-  boardBtn,
-  modal,
-  formModal,
-  modalCancel,
-  modalConfirm,
-  addTodo,
-  addDesc,
-  boardCard,
-  boardCardText,
-  boardDesc,
-  boardData,
+  // boardBtn,
+  // modal,
+  // formModal,
+  // modalCancel,
+  // modalConfirm,
+  // addTodo,
+  // addDesc,
+  // boardCardTodo,
   board,
-  boardStatusTodo,
+  boardProgress,
+  boardTodo,
+  boardTodoProgress,
+  boardTodoDone,
+  boardDone,
 } from './domElement.js';
-
-const KEY_TRELLO_TODO = 'trelloTodo';
-const KEY_TRELLO = 'trello';
 
 function render() {
   function clock() {
@@ -27,56 +26,75 @@ function render() {
   setInterval(clock, 1000);
   clock();
 
-  const trello = [];
-  let trelloTodo = getLocalStorage(KEY_TRELLO_TODO) || [];
-  boardBtn.addEventListener('click', () => {
-    modal.classList.add('show-modal');
-  });
+  async function DisplayTodos(id) {
+    await getUser(KEY_API, id).then((user) => {
+      let todos = user.desk.create;
+      todos.forEach((todo) => {
+        const boardUser = boardTodo.content.querySelector('.board__info-user');
+        boardUser.textContent = user.name;
+        const boardCardText =
+          boardTodo.content.querySelector('.board__card-text');
+        boardCardText.textContent = todo.title;
+        const boardDesc = boardTodo.content.querySelector(
+          '.board__descriptions-title'
+        );
+        boardDesc.textContent = todo.desc;
+        const boardDate = boardTodo.content.querySelector('.board__info-data');
+        boardDate.textContent = newTime(new Date());
+        const boardTodoClone = boardTodo.content.cloneNode(true);
+        board.append(boardTodoClone);
+        
+      });
 
-  formModal.addEventListener('submit', (e) => {
-    e.preventDefault();
-  });
+      board.addEventListener('click', (e) => {
+        console.log(todo)
+      });
+      
 
-  modalCancel.addEventListener('click', () => {
-    modal.classList.remove('show-modal');
-    addTodo.value = '';
-    addDesc.value = '';
-  });
 
-  modalConfirm.addEventListener('click', () => {
-    if (addTodo.value === '' || addDesc.value === '') {
-      alert('Please Enter todo');
-    } else {
-      const todo = {
-        title: addTodo.value.trim(),
-        descriptions: addDesc.value.trim(),
-        user: '',
-        id: new Date().getTime(),
-        time: newTime(new Date()),
-      };
-      addTodo.value = '';
-      addDesc.value = '';
-      modal.classList.remove('show-modal');
-      trelloTodo.push(todo);
-      setLocalStorage(KEY_TRELLO_TODO, trelloTodo);
-      board.innerHTML = '';
-      DisplayTodos();
-    }
-  });
+     
+    });
 
-  function DisplayTodos() {
-    boardStatusTodo.textContent = getStatusTodo(trelloTodo);
-    trelloTodo.forEach((todo) => {
-      boardCardText.textContent = todo.title;
-      boardDesc.textContent = todo.descriptions;
-      boardData.textContent = todo.time;
-      const newBoardCard = boardCard.cloneNode(true);
-      newBoardCard.style.display = 'block';
-      board.append(newBoardCard);
+    getUser(KEY_API, id).then((user) => {
+      user.desk.progress.forEach((todo) => {
+        const boardUser =
+          boardTodoProgress.content.querySelector('.board__info-user');
+        boardUser.textContent = user.name;
+        const boardCardText =
+          boardTodoProgress.content.querySelector('.board__card-text');
+        boardCardText.textContent = todo.title;
+        const boardDesc = boardTodoProgress.content.querySelector(
+          '.board__descriptions-title'
+        );
+        boardDesc.textContent = todo.desc;
+        const boardDate =
+          boardTodoProgress.content.querySelector('.board__info-data');
+        boardDate.textContent = newTime(new Date());
+        const boardProgressClone = boardTodoProgress.content.cloneNode(true);
+        boardProgress.append(boardProgressClone);
+      });
+    });
+    getUser(KEY_API, id).then((user) => {
+      user.desk.done.forEach((todo) => {
+        const boardUser =
+          boardTodoDone.content.querySelector('.board__info-user');
+        boardUser.textContent = user.name;
+        const boardCardText =
+          boardTodoDone.content.querySelector('.board__card-text');
+        boardCardText.textContent = todo.title;
+        const boardDesc = boardTodoDone.content.querySelector(
+          '.board__descriptions-title'
+        );
+        boardDesc.textContent = todo.desc;
+        const boardDate =
+          boardTodoDone.content.querySelector('.board__info-data');
+        boardDate.textContent = newTime(new Date());
+        const boardDoneClone = boardTodoDone.content.cloneNode(true);
+        boardDone.append(boardDoneClone);
+      });
     });
   }
-
-  DisplayTodos();
+  DisplayTodos(1);
 }
 
 export { render };

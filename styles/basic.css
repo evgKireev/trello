@@ -39,15 +39,7 @@ body {
   display: flex;
   justify-content: space-around;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
-.boards{
-  width: 370px;
-  background-color: #fff;
-  border-radius: 10px;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-   
-}
+
