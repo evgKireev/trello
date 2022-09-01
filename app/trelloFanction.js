@@ -1,11 +1,12 @@
-export function newTime(data) {
-  let h = data.getHours();
-  let m = data.getMinutes();
+import { clock } from './elements.js';
+export function newTime() {
+  clock.clear()
+  const date = new Date();
+  let h = date.getHours();
+  let m = date.getMinutes();
+  let s = date.getSeconds();
   m < 10 ? (m = '0' + m) : m;
-  return `${h}:${m}`;
+  h < 10 ? (h = '0' + h) : h;
+  s < 10 ? (s = '0' + s) : s;
+  clock.innerHTML('afterbegin',`${h}:${m}:${s}`)
 }
-
-export function getStatusTodo(array) {
-  return array.filter((el) => el).length;
-}
-

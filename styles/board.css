@@ -84,7 +84,8 @@
 
 .board__card-edit,
 .board__card-delete,
-.board__descriptions-move {
+.board__descriptions-move,
+.board__card-complete {
   background-color: #fff;
   padding: 5px 15px;
   border: 1px solid #fff;
