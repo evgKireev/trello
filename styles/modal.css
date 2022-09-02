@@ -1,26 +1,39 @@
 .modal {
   display: none;
-  border-radius: 10px;
-  border: 1px solid #96c081;
-  background-color: #d5e8d4;
+  width: 100%;
+  height: 100%;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.399);
 }
+
+.show-modal {
+  display: flex;
+}
+
+.form__modal-text {
+  border-radius: 10px;
+  border: 1px solid rgb(233, 64, 64);
+  background-color: #fff;
+  text-align: center;
+  color: rgb(233, 64, 64);
+  padding: 10px 20px;
+}
+
+
+
+
 
 .form__modal {
   padding: 15px;
 }
 
-.form__modal-text {
-  border-radius: 5px;
-  border: 1px solid #96c081;
-  width: 50%;
-  outline: none;
-  margin-bottom: 10px;
-  padding: 5px;
-}
+
 
 .form__modal-desc {
   border-radius: 10px;
@@ -42,9 +55,4 @@ button {
   border: 1px solid #96c081;
   font-size: 12px;
   cursor: pointer;
-}
-
-.show-modal {
-  display: block;
-  transition: 100s;
 }

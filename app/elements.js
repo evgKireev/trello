@@ -6,6 +6,14 @@ const boardTodoDone = $('#board-done');
 const board = $('.board');
 const boardDesc = $('.board-progress');
 const boardDone = $('.board-done');
+const boardTodoState = $('.board__status-todo')
+const boardTodoStateProgress = $('.board__status-progress')
+const boardTodoStateDone = $('.board__status-done')
+const deleteAll = $('.board__btn-move')
+const root =  $('.root')
+
+
+ 
 
 export {
   clock,
@@ -15,4 +23,10 @@ export {
   board,
   boardDesc,
   boardDone,
+  boardTodoState,
+  boardTodoStateProgress,
+  boardTodoStateDone,
+  deleteAll,
+  root,
+  
 };

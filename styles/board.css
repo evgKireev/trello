@@ -103,7 +103,13 @@
   cursor: pointer;
 }
 
-.board__btn-color_move {
+.board__btn-move {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #96c081;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
   background-color: #dae8fc;
   border: 1px solid #88a5cf;
 }

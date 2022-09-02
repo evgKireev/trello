@@ -1,3 +1,6 @@
+import { Modal } from './Modal.js';
+import { $ } from './DOM.js';
+
 export class User {
   #user = {};
   #desks = {};
@@ -24,14 +27,20 @@ export class User {
     this.#desks = user.desks;
   }
 
-  async fetcher(collback,appendDesk) {
+  async fetcher(collback, appendDesk, message) {
     try {
       this.user = await collback();
       this.#user = this.user;
       this.#desks = this.user.desks;
-      appendDesk()
+      appendDesk();
     } catch (e) {
-      console.error('fetcher()', e.message);
+      Modal.showModal(`${message}: ${e.message}`);
+      const modal = $('.modal');
+      modal.addEvent('click', (e) => {
+        if (e.target.className === 'modal show-modal') {
+          modal.remove();
+        }
+      });
     }
   }
 }

@@ -1,4 +1,5 @@
 import { clock } from './elements.js';
+import { User } from './User.js';
 export function newTime() {
   clock.clear()
   const date = new Date();
@@ -8,5 +9,5 @@ export function newTime() {
   m < 10 ? (m = '0' + m) : m;
   h < 10 ? (h = '0' + h) : h;
   s < 10 ? (s = '0' + s) : s;
-  clock.innerHTML('afterbegin',`${h}:${m}:${s}`)
+  clock.insertHTML('afterbegin',`${h}:${m}:${s}`)
 }

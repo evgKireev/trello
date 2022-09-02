@@ -33,7 +33,7 @@ export class API {
     const res = await fetch(this.#API_KEY + userId, option);
     if (res.ok) {
       const user = await res.json();
-      console.log(user);
+      return user
     } else {
       throw new Error(res.statusText);
     }

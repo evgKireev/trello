@@ -26,11 +26,15 @@ export class DOM {
     this.el.addEventListener(type, callback);
   }
 
-  innerHTML(place, html) {
+  insertHTML(place, html) {
     this.el.insertAdjacentHTML(place, html);
   }
 
   clear() {
     this.el.innerHTML = '';
+  }
+
+  remove() {
+    this.el.remove();
   }
 }
