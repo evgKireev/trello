@@ -51,7 +51,7 @@ export class Desks extends User {
         );
         const btnMove = createBoardTodo.find('.board__descriptions-move');
         btnMove.addEvent('click', () => {
-          const limit = 4;
+          const limit = 2;
           if (this.getDesks.progress.length >= limit) {
             Modal.showModalLimit()
             return

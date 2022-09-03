@@ -1,3 +1,4 @@
+import { Modal } from './Modal.js';
 export class API {
   static #API_KEY = 'https://6307cc363a2114bac76bdf07.mockapi.io/users/';
   static async getUsers() {
@@ -11,10 +12,12 @@ export class API {
   }
 
   static async getUser(userId) {
+    Modal.loaderShow();
     const res = await fetch(this.#API_KEY + userId);
     if (res.ok) {
       const user = await res.json();
-      return user
+      setTimeout(Modal.removeLoader, 700);
+      return user;
     } else {
       throw new Error(res.statusText);
     }
@@ -33,7 +36,7 @@ export class API {
     const res = await fetch(this.#API_KEY + userId, option);
     if (res.ok) {
       const user = await res.json();
-      return user
+      return user;
     } else {
       throw new Error(res.statusText);
     }

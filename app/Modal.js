@@ -3,6 +3,7 @@ import { root } from './elements.js';
 import { Desks } from './Desks.js';
 export class Modal {
   static showModal(message) {
+    this.removeLoader()
     root.insertHTML(
       'afterend',
       `<div class="modal show-modal"><h3 class = "form__modal-text">${message}</h3></div>`
@@ -41,7 +42,6 @@ export class Modal {
      Please complete the current tasks, and then move on to the new ones!</h3>
       <div class="modal-remove-inner">
       <button class="modal-remove-cancel">Cancel</button>
-      <button class="modal-remove-confirm">Confirm</button></div>
     </div>`
     );
 
@@ -49,10 +49,27 @@ export class Modal {
     cancelBtn.addEvent('click', () => {
       removeElement.remove();
     });
+  }
 
-    const confirmBtn = removeElement.find('.modal-remove-confirm');
-    confirmBtn.addEvent('click', () => {
-      removeElement.remove();
-    });
+  static loaderShow() {
+    const loader = DOM.create('div', 'modal', 'show-modal');
+    root.el.append(loader.el);
+    loader.insertHTML(
+      'afterbegin',
+      `<div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      </div>`
+    );
+  }
+  static removeLoader() {
+    const loader = root.find('.modal');
+    loader.remove();
   }
 }
