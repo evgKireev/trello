@@ -25,6 +25,7 @@
   padding: 30px 10px;
 }
 
+
 .modal-remove-inner{
   display: flex;
     justify-content: space-around;
@@ -34,7 +35,7 @@
   margin-bottom: 15px;
 }
 
-.modal-remove-cancel{
+.modal-cancel{
   background-color: #ddaeac;
   border: none;
   padding: 10px 30px;
@@ -44,17 +45,17 @@
   cursor: pointer;
 }
 
-.modal-remove-cancel:hover{
+.modal-cancel:hover{
   background-color: rgb(247, 70, 70);
   transform: scale(1.1)
 }
 
-.modal-remove-confirm:hover{
+.modal-confirm:hover{
   background-color: rgb(59, 197, 82);
   transform: scale(1.1)
 }
 
-.modal-remove-confirm{
+.modal-confirm{
   background-color: #96c081;
   border: none;
   padding: 10px 30px;
@@ -68,15 +69,17 @@
 
 .form__modal-text {
   border-radius: 10px;
-  border: 1px solid rgb(233, 64, 64);
+  border: 1px solid #96c081;
   background-color: #fff;
-  text-align: center;
-  color: rgb(233, 64, 64);
   padding: 10px 20px;
+  margin-bottom: 15px;
+  outline: none;
 }
 
 .form__modal {
   padding: 15px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .form__modal-desc {

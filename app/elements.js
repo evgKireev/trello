@@ -11,6 +11,9 @@ const boardTodoStateProgress = $('.board__status-progress')
 const boardTodoStateDone = $('.board__status-done')
 const deleteAll = $('.board__btn-move')
 const root =  $('.root')
+const addTodo = $('.board__btn')
+
+
 
 
  
@@ -28,5 +31,6 @@ export {
   boardTodoStateDone,
   deleteAll,
   root,
+  addTodo
   
 };

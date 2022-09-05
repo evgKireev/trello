@@ -2,6 +2,8 @@ import { API } from './API.js';
 import { $ } from './DOM.js';
 import { User } from './User.js';
 import { Modal } from './Modal.js';
+import { DOM } from './DOM.js';
+import {timeTodo} from './trelloFanction.js'
 import {
   FETCHING_ERROR_MESSAGE,
   WHILE_ERROR_MOVING,
@@ -19,6 +21,7 @@ import {
   boardTodoStateDone,
   deleteAll,
   root,
+  addTodo,
 } from './elements.js';
 
 export class Desks extends User {
@@ -49,12 +52,55 @@ export class Desks extends User {
         const createBoardTodo = $(
           document.importNode(boardTodo.el.content, true)
         );
+
+        // boardDesc.addEvent('dragover', (event) => {
+        //   event.preventDefault();
+        // });
+
+        // createBoardTodo.addEvent('dragstart', (event) => {
+        //     const limit = 2;
+        //   if (this.getDesks.progress.length >= limit) {
+        //     Modal.showModalLimit();
+        //     return;
+        //   } else {
+        //     const create = this.getDesks.create.filter(
+        //       (todo) => event.target
+        //     );
+        //     const progress = [...this.getDesks.progress, el];
+        //     const newDesks = { ...this.getDesks, create, progress };
+        //     this.fetcher(
+        //       () => API.putUser(this.getUserId, { desks: newDesks }),
+        //       this.appendDesk.bind(this),
+        //       WHILE_ERROR_MOVING
+        //     );
+        //   }
+        // });
+
+        // boardDesc.addEvent('drop', (e) => {
+        //     const limit = 2;
+        //   if (this.getDesks.progress.length >= limit) {
+        //     Modal.showModalLimit();
+        //     return;
+        //   } else {
+        //     const create = this.getDesks.create.filter(
+        //       (todo) => todo.id !== el.id
+        //     );
+        //     const progress = [...this.getDesks.progress, el];
+        //     const newDesks = { ...this.getDesks, create, progress };
+        //     this.fetcher(
+        //       () => API.putUser(this.getUserId, { desks: newDesks }),
+        //       this.appendDesk.bind(this),
+        //       WHILE_ERROR_MOVING
+        //     );
+        //   }
+        // });
+
         const btnMove = createBoardTodo.find('.board__descriptions-move');
         btnMove.addEvent('click', () => {
           const limit = 2;
           if (this.getDesks.progress.length >= limit) {
-            Modal.showModalLimit()
-            return
+            Modal.showModalLimit();
+            return;
           } else {
             const create = this.getDesks.create.filter(
               (todo) => todo.id !== el.id
@@ -180,5 +226,63 @@ export class Desks extends User {
       };
       Modal.showModalRemove(removeAll);
     });
+
+    addTodo.addEvent('click', () => {
+      const modal = DOM.create('div', 'modal', 'show-modal');
+      root.el.append(modal.el);
+      modal.insertHTML(
+        'afterbegin',
+        `
+    <form class="form__modal">
+                <input
+                  class="form__modal-text"
+                  type="text"
+                  placeholder="Title"
+                />
+                <textarea
+                  class="form__modal-desc"
+                  placeholder="Descriptions"
+                ></textarea>
+                <div class="form__modal-actions">
+                  <button class="modal-cancel">Cancel</button>
+                  <button class="modal-confirm">Confirm</button>
+                </div>
+              </form>`
+      );
+
+      const cancelBtn = modal.find('.modal-cancel');
+      cancelBtn.addEvent('click', (event) => {
+        event.preventDefault();
+        modal.remove();
+      });
+
+      const confirmBtn = modal.find('.modal-confirm');
+      confirmBtn.addEvent('click', () => {
+        const todoModal = root.find('.form__modal');
+        const textInputTitle = modal.find('.form__modal-text');
+        const textInputDesc = modal.find('.form__modal-desc');
+        todoModal.addEvent('submit', (e) => {
+          e.preventDefault();
+          const textTask = textInputTitle.el.value;
+          const textDesc = textInputDesc.el.value;
+          const Todo = {
+            title: textTask,
+            desc: textDesc,
+            date:  timeTodo(),
+            id: new Date().getTime(),
+          };
+          textInputTitle.value = '';
+          textInputDesc.value = '';
+          const newDeskCreate = this.getDesks.create.push(Todo);
+          const newDesk = { ...this.getDesks, newDeskCreate };
+          modal.remove();
+          this.fetcher(
+            () => API.putUser(this.getUserId, { desks: newDesk }),
+            this.appendDesk.bind(this),
+            WHILE_ERROR_REMOVING
+          );
+        })
+      })
+    })
   }
 }

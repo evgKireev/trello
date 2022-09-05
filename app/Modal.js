@@ -3,7 +3,7 @@ import { root } from './elements.js';
 import { Desks } from './Desks.js';
 export class Modal {
   static showModal(message) {
-    this.removeLoader()
+    this.removeLoader();
     root.insertHTML(
       'afterend',
       `<div class="modal show-modal"><h3 class = "form__modal-text">${message}</h3></div>`
@@ -17,21 +17,22 @@ export class Modal {
       `<div class="modal-remove">
      <h3 class="modal-remove-title">Are you sure you want to delete?</h3>
       <div class="modal-remove-inner">
-      <button class="modal-remove-cancel">Cancel</button>
-      <button class="modal-remove-confirm">Confirm</button></div>
+      <button class="modal-cancel">Cancel</button>
+      <button class="modal-confirm">Confirm</button></div>
     </div>`
     );
 
-    const cancelBtn = removeElement.find('.modal-remove-cancel');
+    const cancelBtn = removeElement.find('.modal-cancel');
     cancelBtn.addEvent('click', () => {
       removeElement.remove();
     });
 
-    const confirmBtn = removeElement.find('.modal-remove-confirm');
+    const confirmBtn = removeElement.find('.modal-confirm');
     confirmBtn.addEvent('click', () => {
       collback() || removeElement.remove();
     });
   }
+
   static showModalLimit() {
     const removeElement = DOM.create('div', 'modal', 'show-modal');
     root.el.append(removeElement.el);
@@ -41,11 +42,11 @@ export class Modal {
      <h3 class="modal-remove-title">
      Please complete the current tasks, and then move on to the new ones!</h3>
       <div class="modal-remove-inner">
-      <button class="modal-remove-cancel">Cancel</button>
+      <button class="modal-cancel">Cancel</button>
     </div>`
     );
 
-    const cancelBtn = removeElement.find('.modal-remove-cancel');
+    const cancelBtn = removeElement.find('.modal-cancel');
     cancelBtn.addEvent('click', () => {
       removeElement.remove();
     });
@@ -72,4 +73,51 @@ export class Modal {
     const loader = root.find('.modal');
     loader.remove();
   }
+
+  // static showModalAddTodo(collback) {
+  //   const modal = DOM.create('div', 'modal', 'show-modal');
+  //   root.el.append(modal.el);
+  //   modal.insertHTML(
+  //     'afterbegin',
+  //     `
+  //   <form class="form__modal">
+  //               <input
+  //                 class="form__modal-text"
+  //                 type="text"
+  //                 placeholder="Title"
+  //               />
+  //               <textarea
+  //                 class="form__modal-desc"
+  //                 placeholder="Descriptions"
+  //               ></textarea>
+  //               <div class="form__modal-actions">
+  //                 <button class="modal-cancel">Cancel</button>
+  //                 <button class="modal-confirm">Confirm</button>
+  //               </div>
+  //             </form>`
+  //   );
+
+  //   const todoModal = root.find('.form__modal')
+  //   todoModal.addEvent('submit', (e)=>{
+  //     e.preventDefault()
+  //     collback()
+  //   })
+
+  //   const cancelBtn = modal.find('.modal-cancel');
+  //   cancelBtn.addEvent('click', (event) => {
+  //     event.preventDefault();
+  //     modal.remove();
+  //   });
+
+  //   const confirmBtn = modal.find('.modal-confirm');
+  //   confirmBtn.addEvent('click', () => {
+  //     collback() || modal.remove();
+  //   });
+
+
+
+
+
+
+  // }
 }
