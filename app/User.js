@@ -34,6 +34,7 @@ export class User {
       this.#desks = this.user.desks;
       appendDesk();
     } catch (e) {
+      console.error();
       Modal.showModal(`${message}: ${e.message}`);
       const modal = $('.modal');
       modal.addEvent('click', (e) => {

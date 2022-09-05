@@ -12,6 +12,8 @@ const boardTodoStateDone = $('.board__status-done')
 const deleteAll = $('.board__btn-move')
 const root =  $('.root')
 const addTodo = $('.board__btn')
+const avatar = $('.header-avatar')
+const nameUser = $('.header-name')
 
 
 
@@ -31,6 +33,8 @@ export {
   boardTodoStateDone,
   deleteAll,
   root,
-  addTodo
+  addTodo,
+  avatar,
+  nameUser
   
 };

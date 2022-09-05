@@ -22,6 +22,8 @@ import {
   deleteAll,
   root,
   addTodo,
+  avatar,
+  nameUser
 } from './elements.js';
 
 export class Desks extends User {
@@ -52,7 +54,8 @@ export class Desks extends User {
         const createBoardTodo = $(
           document.importNode(boardTodo.el.content, true)
         );
-
+        avatar.el.setAttribute('src',  this.getUser.avatar)
+        nameUser.el.textContent = this.getUser.name
         // boardDesc.addEvent('dragover', (event) => {
         //   event.preventDefault();
         // });

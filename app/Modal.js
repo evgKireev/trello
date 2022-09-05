@@ -105,7 +105,7 @@ export class Modal {
       e.preventDefault();
       el.title = textInputTitle.el.value;
       el.desc = textInputDesc.el.value;
-      collback(); 
+      collback();
       modal.remove();
     });
 
@@ -115,4 +115,22 @@ export class Modal {
       modal.remove();
     });
   }
+
+  // selectUser() {
+  //   const modal = DOM.create('div', 'modal', 'show-modal');
+  //   root.el.append(modal.el);
+  //   modal.insertHTML(
+  //     'afterbegin',
+  //     `
+  //   <div class="modal-remove">
+  //   <h2>What is your name?</h2>
+  //   <select name="user_profile_color_2" required="required">
+  //   <option value="">Select user</option>
+  //   <option value="1">Синий</option>
+  //   <option value="2">Зеленый</option>
+  //   <option value="3">Желтый</option>
+  // </select>
+  // </div>`
+  //   );
+  // }
 }
