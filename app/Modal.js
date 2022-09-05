@@ -73,50 +73,46 @@ export class Modal {
     loader.remove();
   }
 
-  // static showModalAddTodo(collback) {
-  //   const modal = DOM.create('div', 'modal', 'show-modal');
-  //   root.el.append(modal.el);
-  //   modal.insertHTML(
-  //     'afterbegin',
-  //     `
-  //   <form class="form__modal">
-  //               <input
-  //                 class="form__modal-text"
-  //                 type="text"
-  //                 placeholder="Title"
-  //               />
-  //               <textarea
-  //                 class="form__modal-desc"
-  //                 placeholder="Descriptions"
-  //               ></textarea>
-  //               <div class="form__modal-actions">
-  //                 <button class="modal-cancel">Cancel</button>
-  //                 <button class="modal-confirm">Confirm</button>
-  //               </div>
-  //             </form>`
-  //   );
+  static editTodo(el, collback) {
+    const modal = DOM.create('div', 'modal', 'show-modal');
+    root.el.append(modal.el);
+    modal.insertHTML(
+      'afterbegin',
+      `
+    <form class="form__modal">
+                <input
+                  class="form__modal-text"
+                  type="text"
+                  placeholder="Title"
+                />
+                <textarea
+                  class="form__modal-desc"
+                  placeholder="Descriptions"
+                ></textarea>
+                <div class="form__modal-actions">
+                  <button class="modal-cancel">Cancel</button>
+                  <button class="modal-confirm">Confirm</button>
+                </div>
+              </form>`
+    );
+    const textInputTitle = modal.find('.form__modal-text');
+    const textInputDesc = modal.find('.form__modal-desc');
+    textInputTitle.el.value = el.title;
+    textInputDesc.el.value = el.desc;
 
-  //   const todoModal = root.find('.form__modal')
-  //   todoModal.addEvent('submit', (e)=>{
-  //     e.preventDefault()
-  //     collback()
-  //   })
+    const confirmBtn = modal.find('.modal-confirm');
+    confirmBtn.addEvent('click', (e) => {
+      e.preventDefault();
+      el.title = textInputTitle.el.value;
+      el.desc = textInputDesc.el.value;
+      collback(); 
+      modal.remove();
+    });
 
-  //   const cancelBtn = modal.find('.modal-cancel');
-  //   cancelBtn.addEvent('click', (event) => {
-  //     event.preventDefault();
-  //     modal.remove();
-  //   });
-
-  //   const confirmBtn = modal.find('.modal-confirm');
-  //   confirmBtn.addEvent('click', () => {
-  //     collback() || modal.remove();
-  //   });
-
-
-
-
-
-
-  // }
+    const cancelBtn = modal.find('.modal-cancel');
+    cancelBtn.addEvent('click', (event) => {
+      event.preventDefault();
+      modal.remove();
+    });
+  }
 }

@@ -94,6 +94,20 @@ export class Desks extends User {
         //     );
         //   }
         // });
+        const editBtn = createBoardTodo.find('.board__card-edit');
+        editBtn.addEvent('click', (e) => {
+          e.preventDefault();
+          const editTodo = () => {
+            const create = [...this.getDesks.create];
+            const newDesks = { ...this.getDesks, create };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              WHILE_ERROR_MOVING
+            );
+          };
+          Modal.editTodo(el,editTodo);
+        });
 
         const btnMove = createBoardTodo.find('.board__descriptions-move');
         btnMove.addEvent('click', () => {
@@ -263,8 +277,8 @@ export class Desks extends User {
         e.preventDefault();
         const textInputTitle = modal.find('.form__modal-text');
         const textInputDesc = modal.find('.form__modal-desc');
-        const textTask = textInputTitle.el.value;
-        const textDesc = textInputDesc.el.value;
+        const textTask = textInputTitle.el.value.trim();
+        const textDesc = textInputDesc.el.value.trim();
         if (textTask && textDesc !== '') {
           const Todo = {
             title: textTask,
@@ -277,11 +291,13 @@ export class Desks extends User {
           const newDeskCreate = this.getDesks.create.push(Todo);
           const newDesk = { ...this.getDesks, newDeskCreate };
           modal.remove();
+          Modal.loaderShow();
           this.fetcher(
             () => API.putUser(this.getUserId, { desks: newDesk }),
             this.appendDesk.bind(this),
             WHILE_ERROR_REMOVING
           );
+          setTimeout(Modal.removeLoader, 700);
         } else {
           Modal.showModalLimit('Please Enter Task');
         }
