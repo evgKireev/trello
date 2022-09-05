@@ -3,7 +3,7 @@ import { $ } from './DOM.js';
 import { User } from './User.js';
 import { Modal } from './Modal.js';
 import { DOM } from './DOM.js';
-import {timeTodo} from './trelloFanction.js'
+import { timeTodo } from './trelloFanction.js';
 import {
   FETCHING_ERROR_MESSAGE,
   WHILE_ERROR_MOVING,
@@ -97,9 +97,11 @@ export class Desks extends User {
 
         const btnMove = createBoardTodo.find('.board__descriptions-move');
         btnMove.addEvent('click', () => {
-          const limit = 2;
+          const limit = 4;
           if (this.getDesks.progress.length >= limit) {
-            Modal.showModalLimit();
+            Modal.showModalLimit(
+              'Please complete the current tasks, and then move on to the new ones!'
+            );
             return;
           } else {
             const create = this.getDesks.create.filter(
@@ -257,18 +259,17 @@ export class Desks extends User {
       });
 
       const confirmBtn = modal.find('.modal-confirm');
-      confirmBtn.addEvent('click', () => {
-        const todoModal = root.find('.form__modal');
+      confirmBtn.addEvent('click', (e) => {
+        e.preventDefault();
         const textInputTitle = modal.find('.form__modal-text');
         const textInputDesc = modal.find('.form__modal-desc');
-        todoModal.addEvent('submit', (e) => {
-          e.preventDefault();
-          const textTask = textInputTitle.el.value;
-          const textDesc = textInputDesc.el.value;
+        const textTask = textInputTitle.el.value;
+        const textDesc = textInputDesc.el.value;
+        if (textTask && textDesc !== '') {
           const Todo = {
             title: textTask,
             desc: textDesc,
-            date:  timeTodo(),
+            date: timeTodo(),
             id: new Date().getTime(),
           };
           textInputTitle.value = '';
@@ -281,8 +282,10 @@ export class Desks extends User {
             this.appendDesk.bind(this),
             WHILE_ERROR_REMOVING
           );
-        })
-      })
-    })
+        } else {
+          Modal.showModalLimit('Please Enter Task');
+        }
+      });
+    });
   }
 }

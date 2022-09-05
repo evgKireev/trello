@@ -33,14 +33,13 @@ export class Modal {
     });
   }
 
-  static showModalLimit() {
+  static showModalLimit(text) {
     const removeElement = DOM.create('div', 'modal', 'show-modal');
     root.el.append(removeElement.el);
     removeElement.insertHTML(
       'afterbegin',
       `<div class="modal-remove">
-     <h3 class="modal-remove-title">
-     Please complete the current tasks, and then move on to the new ones!</h3>
+     <h3 class="modal-remove-title">${text}</h3>
       <div class="modal-remove-inner">
       <button class="modal-cancel">Cancel</button>
     </div>`
