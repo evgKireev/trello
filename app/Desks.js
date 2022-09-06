@@ -47,55 +47,47 @@ export class Desks extends User {
   }
 
   appendDesk() {
+    avatar.el.setAttribute('src',  this.getUser.avatar)
+    nameUser.el.textContent = this.getUser.name
     board.clear();
     let { create, progress, done } = this.getDesks;
     if (this.getDesks.create.length) {
       create.forEach((el) => {
         const createBoardTodo = $(
           document.importNode(boardTodo.el.content, true)
-        );
-        avatar.el.setAttribute('src',  this.getUser.avatar)
-        nameUser.el.textContent = this.getUser.name
+        );       
+        // const bC= createBoardTodo.find('.board__card')
+       
         // boardDesc.addEvent('dragover', (event) => {
         //   event.preventDefault();
         // });
 
-        // createBoardTodo.addEvent('dragstart', (event) => {
-        //     const limit = 2;
-        //   if (this.getDesks.progress.length >= limit) {
-        //     Modal.showModalLimit();
-        //     return;
-        //   } else {
-        //     const create = this.getDesks.create.filter(
-        //       (todo) => event.target
-        //     );
-        //     const progress = [...this.getDesks.progress, el];
-        //     const newDesks = { ...this.getDesks, create, progress };
-        //     this.fetcher(
-        //       () => API.putUser(this.getUserId, { desks: newDesks }),
-        //       this.appendDesk.bind(this),
-        //       WHILE_ERROR_MOVING
-        //     );
-        //   }
+        // bC.addEvent('dragstart', (e) => {
+        //   const create = this.getDesks.create.filter(
+        //     (todo) => todo.id !== el.id
+        //   );
+        //   const progress = [...this.getDesks.progress, el];
+        //   const newDesks = { ...this.getDesks, create, progress };
+        //   this.fetcher(
+        //     () => API.putUser(this.getUserId, { desks: newDesks }),
+        //     this.appendDesk.bind(this),
+        //     WHILE_ERROR_MOVING
+        //   );
         // });
 
-        // boardDesc.addEvent('drop', (e) => {
-        //     const limit = 2;
-        //   if (this.getDesks.progress.length >= limit) {
-        //     Modal.showModalLimit();
-        //     return;
-        //   } else {
-        //     const create = this.getDesks.create.filter(
-        //       (todo) => todo.id !== el.id
-        //     );
-        //     const progress = [...this.getDesks.progress, el];
-        //     const newDesks = { ...this.getDesks, create, progress };
-        //     this.fetcher(
-        //       () => API.putUser(this.getUserId, { desks: newDesks }),
-        //       this.appendDesk.bind(this),
-        //       WHILE_ERROR_MOVING
-        //     );
-        //   }
+        // boardDesc.addEvent('drop', (event) => {
+        //   const create = this.getDesks.create.filter(
+        //     (todo) => todo.id !== el.id
+        //   );
+        //   const progress = [...this.getDesks.progress, el];
+        //   const newDesks = { ...this.getDesks, create, progress };
+        //   this.fetcher(
+        //     () => API.putUser(this.getUserId, { desks: newDesks }),
+        //     this.appendDesk.bind(this),
+        //     WHILE_ERROR_MOVING
+        //   );
+
+
         // });
         const editBtn = createBoardTodo.find('.board__card-edit');
         editBtn.addEvent('click', (e) => {
@@ -234,6 +226,7 @@ export class Desks extends User {
       this.appendDesk.bind(this),
       FETCHING_ERROR_MESSAGE
     );
+
     deleteAll.el.addEventListener('click', () => {
       const removeAll = () => {
         const newDesk = { ...this.getDesks, done: [] };
@@ -264,7 +257,7 @@ export class Desks extends User {
                 ></textarea>
                 <div class="form__modal-actions">
                   <button class="modal-cancel">Cancel</button>
-                  <button class="modal-confirm">Confirm</button>
+                  <button class="modal-confirm">Add Todo</button>
                 </div>
               </form>`
       );

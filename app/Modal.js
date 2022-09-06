@@ -1,6 +1,7 @@
 import { DOM } from './DOM.js';
 import { root } from './elements.js';
 import { Desks } from './Desks.js';
+import { User } from './User.js';
 export class Modal {
   static showModal(message) {
     this.removeLoader();
@@ -83,15 +84,15 @@ export class Modal {
                 <input
                   class="form__modal-text"
                   type="text"
-                  placeholder="Title"
+                  placeholder="Title todo"
                 />
                 <textarea
                   class="form__modal-desc"
-                  placeholder="Descriptions"
+                  placeholder="Descriptions todo "
                 ></textarea>
                 <div class="form__modal-actions">
                   <button class="modal-cancel">Cancel</button>
-                  <button class="modal-confirm">Confirm</button>
+                  <button class="modal-confirm">Edit todo</button>
                 </div>
               </form>`
     );
@@ -124,12 +125,7 @@ export class Modal {
   //     `
   //   <div class="modal-remove">
   //   <h2>What is your name?</h2>
-  //   <select name="user_profile_color_2" required="required">
-  //   <option value="">Select user</option>
-  //   <option value="1">Синий</option>
-  //   <option value="2">Зеленый</option>
-  //   <option value="3">Желтый</option>
-  // </select>
+  //  <input><input>
   // </div>`
   //   );
   // }
