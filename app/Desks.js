@@ -23,7 +23,7 @@ import {
   root,
   addTodo,
   avatar,
-  nameUser
+  nameUser,
 } from './elements.js';
 
 export class Desks extends User {
@@ -47,48 +47,49 @@ export class Desks extends User {
   }
 
   appendDesk() {
-    avatar.el.setAttribute('src',  this.getUser.avatar)
-    nameUser.el.textContent = this.getUser.name
+    avatar.el.setAttribute('src', this.getUser.avatar);
+    nameUser.el.textContent = this.getUser.name;
     board.clear();
     let { create, progress, done } = this.getDesks;
     if (this.getDesks.create.length) {
       create.forEach((el) => {
         const createBoardTodo = $(
           document.importNode(boardTodo.el.content, true)
-        );       
-        // const bC= createBoardTodo.find('.board__card')
-       
-        // boardDesc.addEvent('dragover', (event) => {
-        //   event.preventDefault();
-        // });
+        );
 
-        // bC.addEvent('dragstart', (e) => {
-        //   const create = this.getDesks.create.filter(
-        //     (todo) => todo.id !== el.id
-        //   );
-        //   const progress = [...this.getDesks.progress, el];
-        //   const newDesks = { ...this.getDesks, create, progress };
-        //   this.fetcher(
-        //     () => API.putUser(this.getUserId, { desks: newDesks }),
-        //     this.appendDesk.bind(this),
-        //     WHILE_ERROR_MOVING
-        //   );
-        // });
+        const todo = createBoardTodo.find('.board__card');
+        todo.addEvent('dragstart', () => {
+          setTimeout(() => {
+            todo.el.style.display = 'none';
+          }, 0);
+        });
 
-        // boardDesc.addEvent('drop', (event) => {
-        //   const create = this.getDesks.create.filter(
-        //     (todo) => todo.id !== el.id
-        //   );
-        //   const progress = [...this.getDesks.progress, el];
-        //   const newDesks = { ...this.getDesks, create, progress };
-        //   this.fetcher(
-        //     () => API.putUser(this.getUserId, { desks: newDesks }),
-        //     this.appendDesk.bind(this),
-        //     WHILE_ERROR_MOVING
-        //   );
+        todo.addEvent('dragend', (e) => {
+          if (e.screenX > 405) {
+            const create = this.getDesks.create.filter(
+              (todo) => todo.id !== el.id
+            );
+            const progress = [...this.getDesks.progress, el];
+            const newDesks = { ...this.getDesks, create, progress };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              WHILE_ERROR_MOVING
+            );
+          } else {
+            const newDesks = { ...this.getDesks, create, progress, done };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              FETCHING_ERROR_MESSAGE
+            );
+          }
+        });
 
+        boardDesc.addEvent('dragover', (event) => {
+          event.preventDefault();
+        });
 
-        // });
         const editBtn = createBoardTodo.find('.board__card-edit');
         editBtn.addEvent('click', (e) => {
           e.preventDefault();
@@ -101,7 +102,7 @@ export class Desks extends User {
               WHILE_ERROR_MOVING
             );
           };
-          Modal.editTodo(el,editTodo);
+          Modal.editTodo(el, editTodo);
         });
 
         const btnMove = createBoardTodo.find('.board__descriptions-move');
@@ -151,6 +152,55 @@ export class Desks extends User {
         const createBoardProgress = $(
           document.importNode(boardTodoProgress.el.content, true)
         );
+
+        const todo = createBoardProgress.find('.board__card');
+
+        board.addEvent('dragover', (e) => {
+          e.preventDefault();
+        });
+        boardDone.addEvent('dragover', (event) => {
+          event.preventDefault();
+        });
+
+        todo.addEvent('dragstart', () => {
+          setTimeout(() => {
+            todo.el.style.display = 'none';
+          }, 0);
+        });
+
+        todo.addEvent('dragend', (e) => {
+          if (e.screenX < 380) {
+            const progress = this.getDesks.progress.filter(
+              (todo) => todo.id !== el.id
+            );
+            const create = [...this.getDesks.create, el];
+            const newDesks = { ...this.getDesks, create, progress };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              FETCHING_ERROR_MESSAGE
+            );
+          } else if (e.screenX > 703) {
+            const progress = this.getDesks.progress.filter(
+              (todo) => todo.id !== el.id
+            );
+            const done = [...this.getDesks.done, el];
+            const newDesks = { ...this.getDesks, progress, done };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              FETCHING_ERROR_MESSAGE
+            );
+          } else {
+            const newDesks = { ...this.getDesks, create, progress, done };
+            this.fetcher(
+              () => API.putUser(this.getUserId, { desks: newDesks }),
+              this.appendDesk.bind(this),
+              FETCHING_ERROR_MESSAGE
+            );
+          }
+        });
+
         const btnMove = createBoardProgress.find('.board__descriptions-move');
         btnMove.addEvent('click', () => {
           const progress = this.getDesks.progress.filter(
@@ -291,7 +341,7 @@ export class Desks extends User {
           this.fetcher(
             () => API.putUser(this.getUserId, { desks: newDesk }),
             this.appendDesk.bind(this),
-            WHILE_ERROR_REMOVING,
+            WHILE_ERROR_REMOVING
           );
           setTimeout(Modal.removeLoader, 700);
         } else {

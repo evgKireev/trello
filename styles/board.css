@@ -73,6 +73,11 @@
   cursor: pointer;
 }
 
+.board__card-remove{
+  display: none;
+}
+
+
 .board__card-progress {
   background-color: #f8cecc;
   border: 1px solid #ddaeac;
