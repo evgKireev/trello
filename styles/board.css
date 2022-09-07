@@ -95,6 +95,15 @@
   cursor: pointer;
 }
 
+.board__card-edit:hover,
+.board__card-delete:hover,
+.board__descriptions-move:hover{
+  background-color: rgb(236, 228, 228);
+  border: 1px solid rgb(94, 91, 91);
+  transition: all .9s;
+
+}
+
 .board__btn {
   padding: 15px;
   border-radius: 10px;
@@ -102,6 +111,12 @@
   width: 100%;
   font-size: 16px;
   cursor: pointer;
+}
+
+.board__btn:hover {
+  background-color: rgb(59, 197, 82);
+  transition: all 0.5s;
+  color: #fff;
 }
 
 .board__btn-move {
@@ -115,7 +130,12 @@
   border: 1px solid #88a5cf;
 }
 
+.board__btn-move:hover {
+  background-color: #6d99d6;
+  transition: all 0.5s;
+  color: #fff;
+}
 
-.todo--remove{
+.todo--remove {
   display: none;
 }

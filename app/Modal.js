@@ -1,7 +1,5 @@
 import { DOM } from './DOM.js';
 import { root } from './elements.js';
-import { Desks } from './Desks.js';
-import { User } from './User.js';
 export class Modal {
   static showModal(message) {
     this.removeLoader();
@@ -117,16 +115,31 @@ export class Modal {
     });
   }
 
-  // selectUser() {
-  //   const modal = DOM.create('div', 'modal', 'show-modal');
-  //   root.el.append(modal.el);
-  //   modal.insertHTML(
-  //     'afterbegin',
-  //     `
-  //   <div class="modal-remove">
-  //   <h2>What is your name?</h2>
-  //  <input><input>
-  // </div>`
-  //   );
-  // }
+  selectUser(collback) {
+    const modal = DOM.create('div', 'modal', 'show-modal');
+    root.el.append(modal.el);
+    modal.insertHTML(
+      'afterbegin',
+      `
+    <div class="modal-remove-select">
+    <h2>What is your name?</h2>
+    <form class='form-select'>
+    <select class='select' name="user">
+    <option>Сhoose a name</option>
+        <option value="1">Evgeniy Petrov</option>
+        <option value="2">Alex</option>
+        <option value="3">Guy Halvorson</option>
+    </select>
+</form>
+  </div>`
+    );
+    const formSelect = modal.find('.form-select');
+    formSelect.addEvent('change', (e) => {
+      const value = e.target.value.trim();
+      if (value) {
+        new collback(value).initialRender();
+      }
+      modal.remove();
+    });
+  }
 }

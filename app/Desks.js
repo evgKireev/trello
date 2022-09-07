@@ -291,7 +291,7 @@ export class Desks extends User {
           this.fetcher(
             () => API.putUser(this.getUserId, { desks: newDesk }),
             this.appendDesk.bind(this),
-            WHILE_ERROR_REMOVING
+            WHILE_ERROR_REMOVING,
           );
           setTimeout(Modal.removeLoader, 700);
         } else {

@@ -27,14 +27,19 @@ body {
   margin-bottom: 30px;
 }
 
-.header__time span{
+.header__title{
+  color: #8d8c8d;
+  
+}
+
+.header__time{
+  width: 80px;
   background-color: #fff;
   padding: 10px;
   border: 1px solid #a184af;
   border-radius: 10px;
-  margin-left: 15px;
-
 }
+
 
 .trello__inner{
   display: flex;

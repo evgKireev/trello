@@ -14,7 +14,6 @@
 
 .show-modal {
   display: flex;
-  
 }
 
 .modal-remove {
@@ -25,17 +24,16 @@
   padding: 30px 10px;
 }
 
-
-.modal-remove-inner{
+.modal-remove-inner {
   display: flex;
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
-.modal-remove-title{
+.modal-remove-title {
   margin-bottom: 15px;
 }
 
-.modal-cancel{
+.modal-cancel {
   background-color: #ddaeac;
   border: none;
   padding: 10px 30px;
@@ -45,27 +43,25 @@
   cursor: pointer;
 }
 
-.modal-cancel:hover{
+.modal-cancel:hover {
   background-color: rgb(247, 70, 70);
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
-.modal-confirm:hover{
+.modal-confirm:hover {
   background-color: rgb(59, 197, 82);
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
-.modal-confirm{
+.modal-confirm {
   background-color: #96c081;
   border: none;
   padding: 10px 30px;
   border-radius: 10px;
-  
+
   color: #fff;
   cursor: pointer;
-
 }
-
 
 .form__modal-text {
   border-radius: 10px;
@@ -80,6 +76,8 @@
   padding: 15px;
   border-radius: 10px;
   background-color: #fff;
+  max-width: 470px;
+  margin: 20px;
 }
 
 .form__modal-desc {
@@ -97,6 +95,20 @@
   justify-content: space-around;
 }
 
+.modal-remove-select {
+  width: 310px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 2px solid #96c081;
+  text-align: center;
+  padding: 30px 10px;
+  height: 200px;
+}
 
+.form-select {
+  margin-top: 15px;
+}
 
-
+.select {
+  width: 100%;
+}
